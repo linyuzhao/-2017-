@@ -1,0 +1,106 @@
+.wrap,
+.photo{
+  position: relative;
+
+  width: 280px;
+  height: 155px;
+  cursor: pointer;
+}
+.photo{
+  background: url('../images/x-23-wolverine.jpg')  center center  no-repeat;
+  background-size: 100% 100%;
+  
+  transition: all 0.8s;
+}
+
+.wrap:hover .photo{
+  /*用于模糊背景*/
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+
+
+.line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  width:  200px;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+
+.line::before{
+  content: '';
+  height: 100%;
+  width: 0;
+  box-sizing: border-box;
+  border-top: 2px solid #687483;
+  border-bottom: 2px solid #687483;
+  position: absolute;
+  left: 50%;
+  
+  transition: all 0.8s;
+}
+
+.line::after{
+  content: '';
+  height: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-left: 2px solid #687483;
+  border-right: 2px solid #687483;
+  position: absolute;
+  top: 50%;
+  
+  transition: all 0.8s;
+}
+
+ .wrap:hover .line::before{
+  width: 100%;
+  left: 0;
+}
+ .wrap:hover .line::after{
+  height: 100%;
+  top: 0;
+}
+
+
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: transparent;
+
+  font-family: "microsoft yahei";
+  font-weight: bold;
+  font-size: 15px;
+
+}
+/*流光效果*/
+.wrap:hover .content{
+  /*渐变的背景, 宽度两倍于.wrap*/
+  background-image: -webkit-linear-gradient(left, #5B636E, #F8F8F8 25%, #5B636E 50%, #F8F8F8 75%, #5B636E 100%);
+  -webkit-background-size: 200% 100% ;
+  /*以文字的占用平面来截取背景, 文字透明, 从中反映出背景*/
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /*动画效果*/
+  -webkit-animation: light 4s infinite linear;
+}
+
+@-webkit-keyframes light {
+    0%  {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
